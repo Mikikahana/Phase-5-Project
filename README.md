@@ -1,24 +1,25 @@
 # README
+# Phase 5 Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Project Description
+This app allows a dispatcher to view breakdowns, responders and edit the statuses of the breakdowns
 
-Things you may want to cover:
+# Github repo
+https://github.com/Mikikahana/Phase-5-Project
 
-* Ruby version
+# Models
+1. A dispatcher has many breakdowns and has many responders
+2. A responder belongs to a dispatcher, has many breakdowns, and has many clients through breakdowns
+3. A client has many breakdowns and has many responders through breakdowns
+4. A breakdown belong to client, responder, amd dispatcher
 
-* System dependencies
+# ERD Diagram
+![Phase 5 Project ERD v1](https://user-images.githubusercontent.com/116747565/225165146-185642a1-e7bb-4959-913c-af2c9b68a69f.png)
 
-* Configuration
 
-* Database creation
+# API Endpoints
+![API Endpoints](https://user-images.githubusercontent.com/116747565/225165595-ea8223cc-8954-4041-b8fc-f298840604d1.png)
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# REACT Component tree
+![REACT Component tree](https://user-images.githubusercontent.com/116747565/225166001-07f87042-5af8-473a-ab48-736a0bac77ed.png)
