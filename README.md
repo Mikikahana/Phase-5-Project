@@ -4,9 +4,6 @@
 # Project Description
 This app allows a dispatcher to view breakdowns, responders and edit the statuses of the breakdowns
 
-# Github repo
-https://github.com/Mikikahana/Phase-5-Project
-
 # Models
 1. A dispatcher has many breakdowns and has many responders
 2. A responder belongs to a dispatcher, has many breakdowns, and has many clients through breakdowns
