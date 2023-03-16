@@ -32,6 +32,8 @@ gem "bootsnap", require: false
 
 gem 'hirb', '~> 0.7.3'
 
+gem 'sqlite3', '~> 1.3', '>= 1.3.11'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -48,5 +50,6 @@ group :development do
   gem "spring"
 end
 
+gem 'faker', '~> 1.6', '>= 1.6.6'
 
 gem "active_model_serializers", "~> 0.10.13"
