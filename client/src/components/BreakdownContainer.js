@@ -19,14 +19,16 @@ function BreakdownContainer() {
 
   return (
     <section className="container">
-      <div className="card">
+      {/* <div className="card">
         <p>{breakdowns.length > 0 && breakdowns[0].address}</p>
-      </div>
+      </div> */}
       <div className="card">
         <h2>Breakdowns</h2>
         {breakdowns.map((breakdown) => (
           <div key={breakdown.id}>
-            <h3>{breakdown.name}</h3>
+            <h1>{breakdown.name}</h1>
+            <p>{breakdown.image}</p>
+            <h3>{breakdown.description}</h3>
           </div>
         ))}
       </div>

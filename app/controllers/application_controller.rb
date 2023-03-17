@@ -6,7 +6,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
 
     def authorized_user
-        @current_user = Dispatchers.find_by(id: session[:dispatcher_id])
+        @current_user = Dispatcher.find_by(id: session[:dispatcher_id])
         render json: {errors: ["Not authorized"] }, status: :unauthorized unless @current_user
     end
 

@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
     skip_before_action :authorized_user, only: [:create]
 
     def create
-        dispatcher = Dispatcher.find_by(name: params[:name])
+        dispatcher = Dispatcher.find_by(email: params[:email])
         if dispatcher&.authenticate(params[:password])
             session[:dispatcher_id] = dispatcher.id
             render json: dispatcher, status: :ok

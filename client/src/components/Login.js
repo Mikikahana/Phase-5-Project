@@ -8,17 +8,16 @@ function Login ({updateUser}) {
     })
 
     const [errors, setErrors] = useState([])
-    const {fullName, password} = formData
+    const {email, password} = formData
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
     }
-
     function onSubmit(e){
         e.preventDefault()
         const user = {
-            fullName,
+            email,
             password
         }
         fetch('/login',{
@@ -49,10 +48,10 @@ function Login ({updateUser}) {
             <div>
                 <form onSubmit={onSubmit}>
                     <input
-                        name="Name"
+                        name="email"
                         type="text"
-                        placeholder="Full Name"
-                        value={fullName}
+                        placeholder="Email"
+                        value={email}
                         onChange={handleChange}
                     />
                     <input
