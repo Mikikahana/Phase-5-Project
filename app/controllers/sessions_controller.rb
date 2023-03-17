@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
-    skip_before_action :authorize, only: :create
+    skip_before_action :authorized_user, only: [:create]
 
     def create
-        dispatcher = Dispatcher.find_by(email: params[:email])
+        dispatcher = Dispatcher.find_by(name: params[:name])
         if dispatcher&.authenticate(params[:password])
             session[:dispatcher_id] = dispatcher.id
-            render json: dispatcher, status: :created
+            render json: dispatcher, status: :ok
         else
             render json: {error: "Invalid email or password"}, status: :unauthorized
         end

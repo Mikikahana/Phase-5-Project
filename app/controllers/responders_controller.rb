@@ -26,6 +26,6 @@ class RespondersController < ApplicationController
     end
 
     def responder_params
-        params.permit(:name, :distance, :available)
+        params.permit(:name, :distance, :available, :dispatcher_id)
     end
 end

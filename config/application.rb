@@ -22,7 +22,7 @@ module ExampleProject
   class Application < Rails::Application
     config.load_defaults 7.0
 
-    config.api_only = true
+    config.api_only = false
 
     # ▾ Must add these lines! ▾
     # Adding back cookies and session middleware
