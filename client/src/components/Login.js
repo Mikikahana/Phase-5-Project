@@ -40,9 +40,6 @@ function Login ({updateUser}) {
     return (
         <div>
             <div>
-                <h1>Chaverim</h1>
-            </div>
-            <div>
                 <h2>Login</h2>
             </div>
             <div>

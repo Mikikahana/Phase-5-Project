@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Responders from "./Responders";
 
 function Navbar() {
     return (
@@ -8,6 +9,7 @@ function Navbar() {
         </div>
         <nav>
         <Link to="/">Home</Link>
+        <button><Link to="/responders" element={<Responders/>}>Responders</Link></button>
         </nav>
     </header>
     );

@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import BreakdownCard from "./BreakdownCard.js";
 
 function BreakdownContainer() {
   const [breakdowns, setBreakdowns] = useState([]);
 
   useEffect(() => {
-    fetch(`/breakdowns`).then((response) => {
-      if (response.ok) {
-        response.json().then((data) =>
+    fetch(`/breakdowns`).then((r) => {
+      if (r.ok) {
+        r.json().then((data) =>
           setBreakdowns(data)
         );
       } else {
-        response.json().then((error) =>
+        r.json().then((error) =>
           console.log(error)
         );
       }
@@ -19,19 +21,17 @@ function BreakdownContainer() {
 
   return (
     <section className="container">
-      {/* <div className="card">
-        <p>{breakdowns.length > 0 && breakdowns[0].address}</p>
-      </div> */}
-      <div className="card">
-        <h2>Breakdowns</h2>
-        {breakdowns.map((breakdown) => (
-          <div key={breakdown.id}>
-            <h1>{breakdown.name}</h1>
-            <p>{breakdown.image}</p>
-            <h3>{breakdown.description}</h3>
-          </div>
-        ))}
-      </div>
+      {breakdowns.map((breakdown) => (
+        <div key={breakdown.id} className="card">
+          {/* <Link to={`/breakdowns/${breakdown.id}`}> */}
+            <div>
+              {/* <h1>Name: {breakdown.name}</h1>
+              <h3>Description: {breakdown.description}</h3> */}
+          <BreakdownCard id={breakdown.id} />
+            </div>
+          {/* </Link> */}
+        </div>
+      ))}
     </section>
   );
 }

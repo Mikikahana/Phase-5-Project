@@ -3,6 +3,9 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import Homepage from "./components/Homepage";
+import BreakdownCard from './components/BreakdownCard';
+import BreakdownEditForm from './components/BreakdownEditFrom'
+import Responders from './components/Responders';
 import "./App.css"
 
 function App() {
@@ -55,7 +58,10 @@ function App() {
       <Navbar currentUser={currentUser} handleLogout={handleLogout}/>
       <Routes>
         <Route path="/login" element={<Login updateUser={updateUser}/>} />
-        <Route path="/home" element={<Homepage />} />
+        <Route path="/" element={<Homepage />} />
+        <Route exact path="/breakdowns/:id" element={<BreakdownCard/>}/>
+        <Route exact path="/breakdowns/:id/edit" component={BreakdownEditForm} />
+        <Route path="/responders" element={<Responders/>} />
       </Routes>
     </div>
   );
