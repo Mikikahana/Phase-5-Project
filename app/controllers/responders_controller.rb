@@ -19,6 +19,12 @@ class RespondersController < ApplicationController
         render json: responder, status: :accepted
     end
 
+    def destroy
+        responder = find_responder
+        responder.delete
+        head :no_content
+    end
+
     private
 
     def find_responder

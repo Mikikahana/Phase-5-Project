@@ -1,71 +1,76 @@
-import { useEffect, useState } from "react";
+import React, { useState, useEffect} from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 
+function BreakdownEditForm({updateBreakdown}) {
+  const [formData, setFormData] = useState({
+    name:'',
+    address:'',
+    phone_number:'',
+    description:'',
+    car_type:'',
+    dispatcher_id:'',
+  })
+  const [errors, setErrors] = useState([])
+  const navigate = useNavigate();
 
-function BreakdownEditForm({ breakdown }) {
-  const [name, setName] = useState(breakdown.name);
-  const [phoneNumber, setPhoneNumber] = useState(breakdown.phone_number);
-  const [address, setAddress] = useState(breakdown.address);
-  const [image, setImage] = useState(breakdown.image);
-  const [description, setDescription] = useState(breakdown.description);
-  const [carType, setCarType] = useState(breakdown.car_type);
+  const {id} = useParams()
+  useEffect(() => {
+    fetch(`/breakdowns/${id}`)
+    .then(res => res.json())
+    .then(res => setFormData(res))
+  },[])
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    // Send the updated breakdown data to the server
-    // ...
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input
-          type="text"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-        />
-      </label>
-      <label>
-        Phone Number:
-        <input
-          type="text"
-          value={phoneNumber}
-          onChange={(event) => setPhoneNumber(event.target.value)}
-        />
-      </label>
-      <label>
-        Address:
-        <input
-          type="text"
-          value={address}
-          onChange={(event) => setAddress(event.target.value)}
-        />
-      </label>
-      <label>
-        Image URL:
-        <input
-          type="text"
-          value={image}
-          onChange={(event) => setImage(event.target.value)}
-        />
-      </label>
-      <label>
-        Description:
-        <textarea
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-      </label>
-      <label>
-        Car Type:
-        <input
-          type="text"
-          value={carType}
-          onChange={(event) => setCarType(event.target.value)}
-        />
-      </label>
-      <button type="submit">Save Changes</button>
-    </form>
-  );
+
+function handleSubmit(e) {
+  e.preventDefault();
+  // PATCH to `/Breakdowns/${id}`
+  fetch(`/breakdowns/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  })
+    .then(res => {
+      if (res.ok) {
+        res.json().then(updateBreakdown);
+        // Redirect to updated page
+        navigate(`/breakdowns/${id}`);
+      } else {
+        // Display errors
+        res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)));
+      }
+    });
 }
-export default BreakdownEditForm
+
+    return (
+      <div className='form'>
+      <form onSubmit={handleSubmit}>
+        <label>Name </label>
+        <input type='text' name='name' value={formData.name} onChange={handleChange} />
+
+        <label> Address</label>
+        <input type='text' name='address' value={formData.address} onChange={handleChange} />
+
+        <label>Phone Number</label>
+        <input type='text' name='phone_number' value={formData.phone_number} onChange={handleChange} />
+
+        <label>Description</label>
+        <input type='text' name='description' value={formData.description} onChange={handleChange} />
+
+        <label>Image</label>
+        <input type='text' name='image' value={formData.image} onChange={handleChange} />
+
+        <label>Car Type</label>
+        <input type='text' name='car_type' value={formData.car_type} onChange={handleChange} />
+
+        <button>Update Breakdown</button>
+        </form>
+      </div>
+    )
+  }
+
+  export default BreakdownEditForm

@@ -1,69 +1,36 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function BreakdownCard({ id }) {
-  const [breakdown, setBreakdown] = useState({});
-  const [showEditForm, setShowEditForm] = useState(false);
 
-  useEffect(() => {
-    fetch(`/breakdowns/${id}`).then((r) => {
-      if (r.ok) {
-        r.json().then((data) => {
-          setBreakdown(data);
-        });
-      } else {
-        r.json().then((err) =>
-          console.log(err)
-        );
-      }
-    });
-  }, [id]);
+function BreakdownCard({breakdown, setCurrentBreakdown, onDeleteBreakdown}) {
+  const { id } = breakdown
+  const navigate = useNavigate();
+
+  function handleClick()
+  {
+      setCurrentBreakdown(id)
+      navigate(`/breakdowns/${id}`);
+  }
 
   function handleDelete(id) {
     fetch(`/breakdowns/${id}`, {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {
-        setBreakdown((breakdown) =>
-        breakdown.filter((breakdown) => breakdown.id !== id));
-      };
+        onDeleteBreakdown(id); // Call the function to update breakdowns state variable
+      }
     });
   }
 
-  function handleEdit() {
-    setShowEditForm(true);
-  }
-
-  function handleCloseEdit() {
-    setShowEditForm(false);
-  }
-
   return (
-    <section className="container">
-      <div className="card">
-        <h2>Breakdown Details</h2>
-        <h3>{breakdown.name}</h3>
-        <h3>Phone Number: {breakdown.phone_number}</h3>
-        <p>{breakdown.address}</p>
-        <p>
-          <img src={breakdown.image} alt=""/>
-        </p>
-        <p>{breakdown.description}</p>
-        <p>{breakdown.car_type}</p>
-        <button onClick={handleEdit}>
-          Edit Breakdown
-        </button>
-        <button onClick={() => handleDelete(breakdown.id)}>Delete</button>
-      </div>
-
-      {showEditForm && (
-        <div className="edit-form">
-          {/* TODO: render edit form with prior data */}
-          <button onClick={handleCloseEdit}>Cancel</button>
-        </div>
-      )}
-    </section>
-  );
+    <div className='card'>
+    <p>Name: {breakdown.name} </p>
+    <p>Description: {breakdown.description}</p>
+    <p>Car Type: {breakdown.car_type}</p>
+    <button onClick={handleClick}>View Breakdown</button>
+    <button onClick={() => handleDelete(id)}>Delete</button>
+    </div>
+  )
 }
 
-export default BreakdownCard;
+export default BreakdownCard

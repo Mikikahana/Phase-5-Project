@@ -19,6 +19,12 @@ class BreakdownsController < ApplicationController
         render json: breakdown, status: :accepted
     end
 
+    def destroy
+        breakdown = find_breakdown
+        breakdown.destroy
+        head :no_content
+    end
+
     private
 
     def find_breakdown
@@ -26,6 +32,6 @@ class BreakdownsController < ApplicationController
     end
 
     def breakdown_params
-        params.permit(:name, :address, :image, :phone_number, :description, :car_type)
+        params.require(:breakdown).permit(:name, :address, :image, :phone_number, :description, :car_type, :dispatcher_id)
     end
 end

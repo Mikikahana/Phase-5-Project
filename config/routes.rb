@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :breakdown_responders
   resources :breakdowns
-  resources :responders, except: [:destroy]
+  resources :responders
   resources :dispatchers
   # get '/hello', to: 'application#hello_world'
   post '/login', to: 'sessions#create'

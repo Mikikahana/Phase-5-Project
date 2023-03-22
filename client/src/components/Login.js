@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login ({updateUser}) {
     const [formData, setFormData] = useState({
@@ -9,6 +9,7 @@ function Login ({updateUser}) {
 
     const [errors, setErrors] = useState([])
     const {email, password} = formData
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -28,7 +29,7 @@ function Login ({updateUser}) {
         .then(resp => {
             if(resp.ok){
                 resp.json().then(user => {
-                    <Navigate to="/home"/>
+                    navigate('/')
                     updateUser(user)})
                     // updateErrors()
             } else {
