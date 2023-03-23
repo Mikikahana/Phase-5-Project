@@ -1,19 +1,19 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import BreakdownContainer from './BreakdownContainer'
-import BreakdownForm from './BreakdownForm'
+// import BreakdownForm from './BreakdownForm'
 
-function Homepage({setCurrentBreakdown}) {
+function Homepage({setCurrentBreakdown, currentUser}) {
   return (
-    <>
     <div>
       <BreakdownContainer setCurrentBreakdown={setCurrentBreakdown}/>
       {/* <BreakdownForm/> */}
+      {currentUser && <button>
+        <Link to="/breakdowns/new">
+          Add Breakdown
+        </Link>
+      </button>}
     </div>
-    <Link to={"/breakdowns/new"}>
-    <button>Add Breakdown</button>
-    </Link>
-    </>
   )
 }
 

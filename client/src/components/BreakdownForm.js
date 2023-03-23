@@ -2,6 +2,7 @@ import React, { useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function BreakdownForm({addBreakdown,currentUser}) {
+  console.log(currentUser)
   const [formData, setFormData] = useState({
     name:'',
     address:'',
@@ -25,7 +26,6 @@ function BreakdownForm({addBreakdown,currentUser}) {
       ...formData,
       dispatcher_id: currentUser.id, // include the current user's ID
     };
-    console.log(data)
 
     fetch('/breakdowns', {
       method: 'POST',

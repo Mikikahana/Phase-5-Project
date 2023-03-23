@@ -36,7 +36,6 @@ function App() {
         }
       })
   },[])
-
   const fetchBreakdowns = () => {
     fetch("/breakdowns")
       .then(r => {
@@ -49,11 +48,14 @@ function App() {
   }
 
   function handleLogout() {
-    setCurrentUser(false);
+    setCurrentUser(null);
     navigate("/login");
     fetch("/logout", {
       method: "DELETE"
     });
+  }
+  function addBreakdown(newBreakdown) {
+    setBreakdowns(prevBreakdowns => [...prevBreakdowns, newBreakdown])
   }
 
   return (
@@ -62,9 +64,9 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login updateUser={updateUser}/>} />
         <Route exact path="/breakdowns/:id" element={<BreakdownPage currentBreakdown={currentBreakdown}/>}/>
-        <Route path="/breakdowns/new" element={<BreakdownForm currentUser={currentUser}/>}/>
+        <Route path="/breakdowns/new" element={<BreakdownForm addBreakdown={addBreakdown} currentUser={currentUser}/>}/>
         <Route path="/breakdowns/:id/edit" element={<BreakdownEditForm/>} />
-        <Route exact path="/" element={<Homepage setCurrentBreakdown={setCurrentBreakdown}/>} />
+        <Route exact path="/" element={<Homepage setCurrentBreakdown={setCurrentBreakdown} currentUser={currentUser}/>} />
         <Route path="/responders" element={<Responders/>} />
       </Routes>
     </div>
