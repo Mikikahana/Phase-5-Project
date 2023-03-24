@@ -49,11 +49,13 @@ function App() {
 
   function handleLogout() {
     setCurrentUser(null);
+    localStorage.removeItem('currentUser');
     navigate("/login");
     fetch("/logout", {
       method: "DELETE"
     });
   }
+
   function addBreakdown(newBreakdown) {
     setBreakdowns(prevBreakdowns => [...prevBreakdowns, newBreakdown])
   }

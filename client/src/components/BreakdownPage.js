@@ -19,7 +19,6 @@ function BreakdownPage({ currentBreakdown }) {
         <p>{page.address}</p>
         <p>{page.description}</p>
         <p>{page.car_type}</p>
-        {/* <p>{page.responder_id}</p> */}
         <Link to={`/breakdowns/${page.id}/edit`}>
             <button>Edit Breakdown</button>
         </Link>

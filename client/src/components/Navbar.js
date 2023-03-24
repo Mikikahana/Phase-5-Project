@@ -1,51 +1,66 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Responders from "./Responders";
 
 function Navbar({ currentUser, handleLogout }) {
     const [loggedIn, setLoggedIn] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (currentUser) {
-            setLoggedIn(true);
-        } else {
-            setLoggedIn(false);
-        }
+    if (currentUser) {
+        setLoggedIn(true);
+    } else {
+        setLoggedIn(false);
+    }
     }, [currentUser]);
+
+    const handleButtonClick = () => {
+    if (!loggedIn) {
+        navigate("/login");
+    }
+    };
 
     const handleLoginLogout = () => {
         if (loggedIn) {
             handleLogout();
             setLoggedIn(false);
         } else {
-        // navigate to the login page or show a login modal
+            // Redirect to login page if user is not logged in
+            navigate("/login");
         }
+    };
+
+    const renderLinks = () => {
+        return (
+            <>
+            <button onClick={handleButtonClick}>
+                <Link to="/">Home</Link>
+            </button>
+            <button onClick={handleButtonClick}>
+                <Link to="/responders" element={<Responders />}>
+                Responders
+                </Link>
+            </button>
+            </>
+        );
     };
 
     return (
         <header>
-        <div className="logo">
-            <h1>Chaverim of GW</h1>
-        </div>
-        <nav>
-            <button>
-            <Link to="/">Home</Link>
-            </button>
-            <button>
-            <Link to="/responders" element={<Responders />}>
-                Responders
-            </Link>
-            </button>
-                {loggedIn && currentUser.name}
+            <div className="logo">
+                <h1>Chaverim of GW</h1>
+            </div>
+            <nav>
+            {renderLinks()}
+            {loggedIn && currentUser.name}
             <button onClick={handleLoginLogout}>
                 <Link to="/login">
                 {loggedIn ? "Logout" : "Login"}
                 </Link>
             </button>
-        </nav>
+            </nav>
         </header>
         );
     }
 
-
-export default Navbar;
+    export default Navbar;

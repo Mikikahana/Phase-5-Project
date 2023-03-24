@@ -18,7 +18,7 @@ function BreakdownEditForm({updateBreakdown}) {
     fetch(`/breakdowns/${id}`)
     .then(res => res.json())
     .then(res => setFormData(res))
-  },[])
+  })
 
   const handleChange = (e) => {
     const { name, value } = e.target
