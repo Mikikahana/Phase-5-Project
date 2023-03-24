@@ -48,7 +48,7 @@ function Navbar({ currentUser, handleLogout }) {
     return (
         <header>
             <div className="logo">
-                <h1>Chaverim of GW</h1>
+                <h1>Chaverim of Greater Washington</h1>
             </div>
             <nav>
             {renderLinks()}
