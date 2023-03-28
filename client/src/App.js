@@ -7,7 +7,7 @@ import BreakdownPage from './components/BreakdownPage';
 import BreakdownEditForm from './components/BreakdownEditFrom'
 import BreakdownForm from './components/BreakdownForm';
 import Responders from './components/Responders';
-import "./App.css"
+// import "./App.css"
 
 function App() {
 

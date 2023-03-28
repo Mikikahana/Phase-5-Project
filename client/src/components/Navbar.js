@@ -7,17 +7,17 @@ function Navbar({ currentUser, handleLogout }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-    if (currentUser) {
-        setLoggedIn(true);
-    } else {
-        setLoggedIn(false);
-    }
+        if (currentUser) {
+            setLoggedIn(true);
+        } else {
+            setLoggedIn(false);
+        }
     }, [currentUser]);
 
     const handleButtonClick = () => {
-    if (!loggedIn) {
-        navigate("/login");
-    }
+        if (!loggedIn) {
+            navigate("/login");
+        }
     };
 
     const handleLoginLogout = () => {
@@ -25,7 +25,6 @@ function Navbar({ currentUser, handleLogout }) {
             handleLogout();
             setLoggedIn(false);
         } else {
-            // Redirect to login page if user is not logged in
             navigate("/login");
         }
     };
@@ -33,34 +32,37 @@ function Navbar({ currentUser, handleLogout }) {
     const renderLinks = () => {
         return (
             <>
-            <button onClick={handleButtonClick}>
-                <Link to="/">Home</Link>
-            </button>
-            <button onClick={handleButtonClick}>
-                <Link to="/responders" element={<Responders />}>
-                Responders
-                </Link>
-            </button>
+                <button class="navbar-button" onClick={handleButtonClick}>
+                    <Link to="/">Home</Link>
+                </button>
+                <button class="navbar-button" onClick={handleButtonClick}>
+                    <Link to="/responders" element={<Responders />}>
+                        Responders
+                    </Link>
+                </button>
             </>
         );
     };
 
     return (
         <header>
-            <div className="logo">
-                <h1>Chaverim of Greater Washington</h1>
+            <div class="navbar flex items-center justify-between">
+                {/* <img src={logo} alt="Logo" class="logo"/> {"https://chaverimgw.org/wp-content/uploads/2022/09/logo.png"} */}
+                <h1 class="navbar-title text-lg">Chaverim of Greater Washington</h1>
+                <div class="links flex space-x-4">{renderLinks()}</div>
+                <div class="flex items-center">
+                    {loggedIn && (
+                        <p class="navbar-title">
+                            Welcome, {currentUser.name}!
+                        </p>
+                    )}
+                    <button class="navbar-button" onClick={handleLoginLogout}>
+                        <Link to="/login">{loggedIn ? "Logout" : "Login"}</Link>
+                    </button>
+                </div>
             </div>
-            <nav>
-            {renderLinks()}
-            {loggedIn && currentUser.name}
-            <button onClick={handleLoginLogout}>
-                <Link to="/login">
-                {loggedIn ? "Logout" : "Login"}
-                </Link>
-            </button>
-            </nav>
         </header>
-        );
-    }
+    );
+}
 
-    export default Navbar;
+export default Navbar;

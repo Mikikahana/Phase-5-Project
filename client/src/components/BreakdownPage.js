@@ -12,17 +12,19 @@ function BreakdownPage({ currentBreakdown }) {
     }, [currentBreakdown])
 
     return (
-    <div className='card'>
+    <ul>
+        <li>
         <img src={page.image} alt='' />
         <p>{page.name}</p>
         <p>{page.phone_number}</p>
         <p>{page.address}</p>
         <p>{page.description}</p>
         <p>{page.car_type}</p>
+        </li>
         <Link to={`/breakdowns/${page.id}/edit`}>
             <button>Edit Breakdown</button>
         </Link>
-    </div>
+    </ul>
     )
 }
 

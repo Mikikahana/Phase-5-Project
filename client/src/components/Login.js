@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, TextField } from '@mui/material';
 
 function Login({ updateUser }) {
     const [formData, setFormData] = useState({
@@ -41,51 +40,55 @@ function Login({ updateUser }) {
     }
 
     return (
-        <Box
-            component="form"
-            sx={{ '& .MuiTextField-root': { m: 1, width: '25ch' }, }}
-            noValidate
-            autoComplete="on"
-            onSubmit={onSubmit}
-        >
+    <form class="login-container"  onSubmit={onSubmit}>
+        <div class='login-form'>
             <div>
-                <div>
-                    <h2>Please Login</h2>
-                </div>
-                <div>
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Email"
-                        name="email"
-                        value={email}
-                        onChange={handleChange}
-                    />
-                    <TextField
-                        required
-                        id="outlined-password-input"
-                        label="Password"
-                        type="password"
-                        autoComplete="current-password"
-                        name="password"
-                        value={password}
-                        onChange={handleChange}
-                    />
-
-                    <div>
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                        >
-                            Login
-                        </Button>
-                    </div>
-                    {errors ? <div>{errors}</div> : null}
-                </div>
+                <h2>Please Login</h2>
             </div>
-        </Box>
+            <div>
+                    <label class="relative block">
+                        <input
+                            placeholder='Email'
+                            name="email"
+                            type="text"
+                            value={email}
+                            onChange={handleChange}
+                            class="mt-1 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                        />
+                        {/* <input
+                            name="email"
+                            type="text"
+                            value={email}
+                            onChange={handleChange}
+                        /> */}
+                        <input
+                            placeholder='Password'
+                            name="password"
+                            type="password"
+                            value={password}
+                            onChange={handleChange}
+                            class="mt-1 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                            focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+                        />
+                        {/* <input
+                            name="password"
+                            type="password"
+                            value={password}
+                            onChange={handleChange}
+                        /> */}
+                        <div className='login-button'>
+                        <button>
+                            Login
+                            </button>
+                        </div>
+                    </label>
+                {errors ? <div>{errors}</div> : null}
+            </div>
+        </div>
+    </form>
     )
 }
+
 
 export default Login;
