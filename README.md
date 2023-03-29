@@ -12,7 +12,7 @@ This app allows a dispatcher to view car breakdowns, all of the responders, edit
 
 ## Requirements
 - Ruby 2.7.0
-- NodeJS (v14 or higher), and npm
+- NodeJS (v16 or higher), and npm
 
 ## Installation
 Clone down the repository, install and update dependencies using npm. When you're ready to start building your project, run:
