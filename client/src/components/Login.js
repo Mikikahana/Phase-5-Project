@@ -42,7 +42,7 @@ function Login({ updateUser }) {
     return (
     <form className="login-container"  onSubmit={onSubmit}>
         <div className='login-form'>
-            <div>
+            <div className='responder-card-content'>
                 <h2>Please Login</h2>
             </div>
             <div>
