@@ -21,7 +21,7 @@ body {
 /* Style the navbar */
 .navbar {
   background-color: #2d3748;
-  height: 60px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,7 +33,6 @@ body {
 /* Style the navbar title */
 .navbar-title {
   color: aquamarine;
-  font-family: 'oleo-script', sans-serif;
 }
 
 /* Style the navbar buttons*/
@@ -86,19 +85,36 @@ body {
   background-color: #5e6164;
 }
 
-/* Breakdown Container */
+.breakdown-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .breakdown-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 1rem;
-  margin: auto;
+  margin: 75px auto auto auto;
   max-width: 1200px;
 }
 
+.add-button {
+  background-color: #0a1722;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 20px;
+  align-self: center;
+  text-align: center;
+  border: 2px solid white;
+}
 
 .breakdown-card {
   /* background-color: #fff; */
-  background-image: linear-gradient(to bottom right, red, yellow, beige);
+  background-image: linear-gradient(to bottom right, white, yellow, red);
   border-radius: 8px;
   box-shadow: 0 px 4px 6px rgba(0, 0, 0, 0.1);
   width: auto;
@@ -109,11 +125,14 @@ body {
 }
 
 .breakdown-card-content {
+  color: blue;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
+  /* text-shadow: -1px 0 blue, 0 1px white, 1px 0 white, 0 -1px white; ; */
 }
 
 .card-button-container {
@@ -138,4 +157,99 @@ body {
 
 .card-button:hover {
   background-color: #5e6164;
+}
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-card {
+  background-image: linear-gradient(to bottom right, white, yellow, red);
+  border-radius: 8px;
+  box-shadow: 0 px 4px 6px rgba(0, 0, 0, 0.1);
+  width: auto;
+  max-width: 400px;
+  height: auto;
+  border: 5px solid #000;
+}
+
+.page-card-content {
+  color: black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 10px 0;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-card {
+  background-color: grey;
+  border-radius: 8px;
+  box-shadow: 0 px 4px 6px rgba(0, 0, 0, 0.1);
+  width: auto;
+  max-width: 400px;
+  height: auto;
+  border: 5px solid #000;
+}
+
+.form-content {
+  color: black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.responder-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1rem;
+  margin: 75px auto auto auto;
+  max-width: 1200px;
+}
+
+.responder-card {
+  /* background-color: #fff; */
+  background-image: linear-gradient(to bottom right, white, yellow, red);
+  border-radius: 8px;
+  box-shadow: 0 px 4px 6px rgba(0, 0, 0, 0.1);
+  width: auto;
+  max-width: 400px;
+  height: auto;
+  max-height: 200px;
+  border: 5px solid #000;
+}
+
+.responder-card-content {
+  color: black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.toggle-button {
+  border: 1px solid black;
+  /* background-color: grey; */
 }

@@ -40,20 +40,20 @@ function Login({ updateUser }) {
     }
 
     return (
-    <form class="login-container"  onSubmit={onSubmit}>
-        <div class='login-form'>
+    <form className="login-container"  onSubmit={onSubmit}>
+        <div className='login-form'>
             <div>
                 <h2>Please Login</h2>
             </div>
             <div>
-                    <label class="relative block">
+                    <label className="relative block">
                         <input
                             placeholder='Email'
                             name="email"
                             type="text"
                             value={email}
                             onChange={handleChange}
-                            class="mt-1 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                            className="mt-1 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
                         />
                         {/* <input
@@ -68,7 +68,7 @@ function Login({ updateUser }) {
                             type="password"
                             value={password}
                             onChange={handleChange}
-                            class="mt-1 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+                            className="mt-1 block px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
                             focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
                         />
                         {/* <input

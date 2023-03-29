@@ -23,14 +23,14 @@ function BreakdownCard({breakdown, setCurrentBreakdown, onDeleteBreakdown}) {
   }
 
   return (
-    <div class='breakdown-card'>
-      <div class='breakdown-card-content'>
+    <div className='breakdown-card'>
+      <div className='breakdown-card-content text-center font-bold italic'>
         <p>Name: {breakdown.name} </p>
         <p>Description: {breakdown.description}</p>
         <p>Car Type: {breakdown.car_type}</p>
-        <div class='card-button-container'>
-        <button class='card-button' onClick={handleClick}>View</button>
-        <button class='card-button' onClick={() => handleDelete(id)}>Delete</button>
+        <div className='card-button-container'>
+        <button className='card-button' onClick={handleClick}>View</button>
+        <button className='card-button' onClick={() => handleDelete(id)}>Delete</button>
         </div>
       </div>
     </div>
